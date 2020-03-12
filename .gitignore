@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Fresh output directories
+tmp/*
+
+# TLS Keys
+*.crt
+*.key
