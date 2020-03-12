@@ -26,3 +26,29 @@ const (
 	// ANON_USER steamID is Dev
 	ANON_USER Type = 10
 )
+
+func GetType(t string) Type {
+	if t == "I" {
+		return INVALID
+	} else if t == "U" {
+		return INDIVIDUAL
+	} else if t == "M" {
+		return MULTISEAT
+	} else if t == "G" {
+		return GAMESERVER
+	} else if t == "A" {
+		return ANON_GAMESERVER
+	} else if t == "P" {
+		return PENDING
+	} else if t == "C" {
+		return CONTENT_SERVER
+	} else if t == "g" {
+		return CLAN
+	} else if t == "T" {
+		return CHAT
+	} else if t == "a" {
+		return P2P_SUPER_SEEDER
+	} else {
+		return INVALID
+	}
+}

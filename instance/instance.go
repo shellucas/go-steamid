@@ -12,3 +12,15 @@ const (
 	// WEB steamID is Dev
 	WEB Instance = 4
 )
+
+// func GetInstance(nr int) Instance {
+// 	if nr == 1 {
+// 		return DESKTOP
+// 	} else if nr == 2 {
+// 		return CONSOLE
+// 	} else if nr == 4 {
+// 		return WEB
+// 	} else {
+// 		return ALL
+// 	}
+// }
