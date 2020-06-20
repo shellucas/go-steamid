@@ -79,6 +79,6 @@ func GetString(t Type) string {
 	}
 }
 
-func (t Type) GetString() string {
-	return Type.GetString(t)
+func (t Type) ToString() string {
+	return GetString(t)
 }
