@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"math"
 	"regexp"
-	chat "steamid/chatinstanceflag"
-	"steamid/instance"
-	steamIDType "steamid/type"
-	"steamid/universe"
 	"strconv"
+
+	chat "github.com/BlackwonderTF/go-steamid/chatinstanceflag"
+	"github.com/BlackwonderTF/go-steamid/instance"
+	steamIDType "github.com/BlackwonderTF/go-steamid/type"
+	"github.com/BlackwonderTF/go-steamid/universe"
 )
 
 type steamID struct {
