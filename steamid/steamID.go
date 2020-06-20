@@ -1,6 +1,7 @@
 package steamid
 
 import (
+	"errors"
 	"fmt"
 	"math"
 	"regexp"
@@ -19,8 +20,10 @@ type steamID struct {
 	accountid int
 }
 
-// CreateSteamID ...
-func CreateSteamID(input string) steamID {
+// Source: https://developer.valvesoftware.com/wiki/SteamID
+
+// CreateSteamID creates a steamID object
+func CreateSteamID(input string) (steamID, error) {
 	s := steamID{
 		universe:  universe.INVALID,
 		idType:    steamIDType.INVALID,
@@ -29,7 +32,7 @@ func CreateSteamID(input string) steamID {
 	}
 
 	if len(input) == 0 {
-		return s
+		return s, errors.New("There was no input given")
 	}
 
 	// r := regexp.MustCompile(`STEAM_(?P<Universe>[0-5]):(?P<IDType>[0-1]):(?P<ID>[0-9]+)`)
@@ -93,7 +96,7 @@ func CreateSteamID(input string) steamID {
 		s.universe = universe.Universe(int(i))
 	}
 
-	return s
+	return s, nil
 }
 
 // FromIndividualAccountID Create an individual SteamID in the public universe given an accountid
@@ -162,7 +165,7 @@ func (sid steamID) Steam2(newerFormat ...bool) string {
 
 		id := fmt.Sprintf("%0.0f", math.Floor(float64(sid.accountid)/2))
 
-		return "STEAM_" + strconv.Itoa(universe) + ":" + strconv.Itoa(sid.accountid&1) + ":" + id
+		return fmt.Sprintf("STEAM_%s:%s:%s", strconv.Itoa(universe), strconv.Itoa(sid.accountid&1), id)
 	}
 }
 
@@ -177,7 +180,10 @@ func (sid steamID) GetSteam2RenderedID(newerFormat ...bool) string {
 
 // Steam3 Render this SteamID into Steam3 textual format
 func (sid steamID) Steam3() string {
-	return ""
+	Y := sid.accountid & 1
+	Z := int(math.Floor(float64(sid.accountid) / 2))
+	W := Z*2 + Y
+	return fmt.Sprintf("[%s:1:%d]", sid.idType.GetString(), W)
 }
 
 // GetSteam3RenderedID Render this SteamID into Steam3 textual format
@@ -187,11 +193,12 @@ func (sid steamID) GetSteam3RenderedID() string {
 
 // ToString Render this SteamID into 64-bit numeric format
 func (sid steamID) ToString() string {
-	// TODO Port the actual node-steamid implementation
+	Z := sid.accountid
+	Instance := (int(sid.instance) << 32)
+	Type := (int(sid.idType) << 52)
+	X := (int(sid.universe) << 56)
 
-	id := int(math.Floor(float64(sid.accountid) / 2))
-
-	return fmt.Sprintf("%d", id*2+0x0110000100000000+sid.accountid&1)
+	return fmt.Sprintf("%d", Z+Instance+Type+X)
 }
 
 // GetSteamID64 Render this SteamID into 64-bit numeric format

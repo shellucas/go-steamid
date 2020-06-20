@@ -20,3 +20,5 @@ tmp/*
 # TLS Keys
 *.crt
 *.key
+
+__debug_bin

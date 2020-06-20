@@ -52,3 +52,33 @@ func GetType(t string) Type {
 		return INVALID
 	}
 }
+
+func GetString(t Type) string {
+	if t == INVALID {
+		return "I"
+	} else if t == INDIVIDUAL {
+		return "U"
+	} else if t == MULTISEAT {
+		return "M"
+	} else if t == GAMESERVER {
+		return "G"
+	} else if t == ANON_GAMESERVER {
+		return "A"
+	} else if t == PENDING {
+		return "P"
+	} else if t == CONTENT_SERVER {
+		return "C"
+	} else if t == CLAN {
+		return "g"
+	} else if t == CHAT {
+		return "T"
+	} else if t == P2P_SUPER_SEEDER {
+		return "a"
+	} else {
+		return "I"
+	}
+}
+
+func (t Type) GetString() string {
+	return Type.GetString(t)
+}
