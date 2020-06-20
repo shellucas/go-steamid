@@ -75,7 +75,6 @@ func CreateSteamID(input string) (steamID, error) {
 
 		if typeChar == "C" {
 			s.instance = instance.Instance(int(s.instance) | int(chat.Clan))
-			s.idType = steamIDType.CHAT
 		} else if typeChar == "L" {
 			s.instance = instance.Instance(int(s.instance) | int(chat.Lobby))
 			s.idType = steamIDType.CHAT
