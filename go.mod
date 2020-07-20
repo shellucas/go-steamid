@@ -1,4 +1,4 @@
-module github.com/BlackwonderTF/go-steamid
+module github.com/shellucas/go-steamid
 
 go 1.14
 
