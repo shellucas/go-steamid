@@ -7,10 +7,10 @@ import (
 	"regexp"
 	"strconv"
 
-	chat "github.com/BlackwonderTF/go-steamid/chatinstanceflag"
-	"github.com/BlackwonderTF/go-steamid/instance"
-	steamIDType "github.com/BlackwonderTF/go-steamid/type"
-	"github.com/BlackwonderTF/go-steamid/universe"
+	chat "github.com/shellucas/go-steamid/chatinstanceflag"
+	"github.com/shellucas/go-steamid/instance"
+	steamIDType "github.com/shellucas/go-steamid/type"
+	"github.com/shellucas/go-steamid/universe"
 )
 
 type steamID struct {

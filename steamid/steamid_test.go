@@ -3,9 +3,9 @@ package steamid_test
 import (
 	"testing"
 
-	"github.com/BlackwonderTF/go-steamid/steamid"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/shellucas/go-steamid/steamid"
 )
 
 func TestSteamIDs(t *testing.T) {
